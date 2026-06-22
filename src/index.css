@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'font1';
+    src: url('../public/fonts/Ubuntu/Ubuntu-Medium.ttf');
+}
+@font-face {
+    font-family: 'HomeFont';
+    src: url('../public/fonts/Tagesschrift-Regular.ttf');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+}
