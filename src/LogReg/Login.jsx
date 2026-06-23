@@ -54,9 +54,12 @@ const Login = () => {
         error.response?.data?.message ||
         "Something went wrong",
     });
-    emailRef.current.value = "";
-    passwordRef.current.value = "";
-    console.log(error);
+    if(error.error.message == "invalid Password"){
+      passwordRef.current.value = "";
+    } else {
+      emailRef.current.value = "";
+      passwordRef.current.value = "";
+    }
   }
 };
 
