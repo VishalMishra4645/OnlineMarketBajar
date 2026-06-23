@@ -1,5 +1,5 @@
-const API_URL = "https://lbmbackend.vercel.app";
-// const API_URL = "http://localhost:1000";
+// const API_URL = "https://lbmbackend.vercel.app";
+const API_URL = "http://localhost:1000";
 
 const Easy_Base_Url = `${API_URL}/signUp`;
 // const product_Base_Url = `${API_URL}/product`;

@@ -10,7 +10,7 @@ export default function App() {
         {/* Animated Heading */}
         <h2 className="text-5xl font-extrabold drop-shadow-sm animate-bounce">
           {/* 🔁 Option 1: Bounce (like before) */}
-          Welcome to <span className="text-blue-600">DynamicPath</span>
+          Welcome to <span className="text-blue-600">Online Market Bajar</span>
         </h2>
 
         {/* 🔁 Option 2: Floating loop effect (uncomment if you want) */}

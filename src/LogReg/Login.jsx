@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { StoreContext } from "../Context/StoreContect";
 import { Easy_URL } from "../environment/api";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -13,30 +14,51 @@ const Login = () => {
   const { setToken } = useContext(StoreContext);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
+
+  const login = {
+    email: emailRef.current.value,
+    password: passwordRef.current.value,
+  };
+
+  try {
+    const loginResponse = await axios.post(
+      Easy_URL.login,
+      login
+    );
+
+    Swal.fire({
+      icon: "success",
+      title: "Login Successful",
+      text: loginResponse.data.message,
+      timer: 1500,
+      showConfirmButton: false,
+    });
 
     setToken(true);
-    const login = {
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
-    };
 
-    try {
-      const loginResponse = await axios.post(Easy_URL.login);
+    localStorage.setItem("token", loginResponse.data.token);
+    localStorage.setItem("userid", loginResponse.data.userid);
 
-      console.log('loginResponse',loginResponse);
-      
-      emailRef.current.value = "";
-      passwordRef.current.value = "";
+    window.dispatchEvent(new Event("userChanged"));
 
-      localStorage.setItem("token", loginResponse.data.token);
-      localStorage.setItem("userid", loginResponse.data.userid);
-      window.dispatchEvent(new Event("userChanged"));
-      navigate("/");
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+    emailRef.current.value = "";
+    passwordRef.current.value = "";
+
+    navigate("/");
+  } catch (error) {
+    Swal.fire({
+      icon: "error",
+      title: "Login Failed",
+      text:
+        error.response?.data?.message ||
+        "Something went wrong",
+    });
+    emailRef.current.value = "";
+    passwordRef.current.value = "";
+    console.log(error);
+  }
+};
 
   return (
     <div className="min-h-screen flex items-start justify-center bg-gradient-to-br from-[#f8faff] via-[#e8f0fe] to-[#fff] px-4 sm:px-6 pt-40">
