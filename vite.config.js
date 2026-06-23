@@ -20,17 +20,17 @@ export default defineConfig({
         icons: [
           {
             src: "./pwaicons.jpeg",
-            sizes: "192x192",
+            sizes: "185x185", // 192X192
             type: "image/png",
           },
           {
             src: "./pwaicons.jpeg",
-            sizes: "512x512",
+            sizes: "500x500", //512X512
             type: "image/png",
           },
           {
             src: "./pwaicons.jpeg",
-            sizes: "512x512",
+            sizes: "500x500", // 512X512
             type: "image/png",
             purpose: "any maskable",
           },

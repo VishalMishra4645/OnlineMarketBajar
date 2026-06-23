@@ -82,7 +82,7 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
             className="text-2xl font-extrabold bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 bg-clip-text text-transparent tracking-wide"
           >
-            {userName ? `${userName}` : "Dynamic Path"}
+            {userName ? `${userName}` : "Online Bajar Market"}
           </motion.h1>
 
           {/* ===== Center: Navigation Links ===== */}
